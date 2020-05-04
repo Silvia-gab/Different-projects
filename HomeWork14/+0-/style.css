@@ -1,0 +1,19 @@
+.squares {
+  display: flex;
+}
+
+.square {
+  width: 135px;
+  height: 70px;
+  text-align: center;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.button {
+  width: 25px;
+  height: 25px;
+}
+
