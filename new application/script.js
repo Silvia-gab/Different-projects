@@ -1,29 +1,22 @@
 "use strict";
 
-let numberOfFilms;
 
-function start() {
-	numberOfFilms = +prompt('How many films did you watch?', '');
-
-	while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
-		numberOfFilms = +prompt('How many films did you watch?', '');
-	}
-
-}
-
-//start();
 
 const personalMoviaDB = {
-	count: numberOfFilms,
+	count: 0,
 	movies: {},
 	actors: {},
 	genres: [],
-	privat: false
-};
+	privat: false,
+	start: function() {
+	personalMoviaDB.count = +prompt('How many films did you watch?', '');
 
+	while (personalMoviaDB.count == '' || personalMoviaDB.count == null || isNaN(personalMoviaDB.count)) {
+		personalMoviaDB.count = +prompt('How many films did you watch?', '');
+		}
 
-
-function rememberMyFilms() {
+	},
+	rememberMyFilms: function() {
 	for (let i = 0; i < 2; i++) {
 	const a = prompt('Which one your last film?', ''),
 		  b = prompt('What do you think abaut this?', '');
@@ -33,16 +26,10 @@ function rememberMyFilms() {
 	} else {
 		console.log('error');
 		i--;
-		}
+	  }
 	}
-}
-
-
-//rememberMyFilms();
-
-
-
-function detectPersonalLevel() {
+  },
+  detectPersonalLevel: function() {
 	if (personalMoviaDB.count < 10) {
 	console.log("You are whtaching a lot of films");
 } else if (personalMoviaDB.count >= 10 && personalMoviaDB.count < 30) {
@@ -52,23 +39,39 @@ function detectPersonalLevel() {
 	} else {
 		console.log("False");
 	}
-}
-
-//detectPersonalLevel();
-
-
-function showMyDB (hidden) {
+  },
+  showMyDB: function(hidden) {
 	if (!hidden) {
 		console.log(personalMoviaDB);
 	}
-}
- showMyDB(personalMoviaDB.privat);
-
- function writeYourGeners() {
+  },
+  toggleVisibleMyDB: function() {
+  	if (personalMoviaDB.privat) {
+  		personalMoviaDB.privat = false;
+  	} else {
+  		personalMoviaDB.privat = true;
+  	}
+  },
+  writeYourGeners: function() {
  	for (let i = 1; i <= 3; i++) {
- 	personalMoviaDB.genres[i - 1] = prompt(`Which film is your favorite ${i}`);
- 	}
- }
+ 	let genre = prompt(`Which film is your favorite ${i}`);
 
- writeYourGeners();
+ 	if (genre === '' || genre === null) {
+ 		console.log('It is wrong answer');
+ 		i--;
+ 	} else {
+  	personalMoviaDB.genres[i - 1] = genre;
+
+ 	  }
+ 	}
+
+ 	personalMoviaDB.genres.forEach((item, i) => {
+ 		console.log(`Which film is your favorite ${i + 1} - this is ${item}`);
+ 	});
+  }
+};
+
+
+
+
 
