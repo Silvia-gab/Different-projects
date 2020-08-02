@@ -13,9 +13,6 @@ Project “Food” - this is my first biggest project. To create this website I 
 
 To check out the project, you should just clone this project and run it in your browser, please use some server (for example I use OpenServer) and write this command "json-server db.json" in the terminal.
 
-Project "Email and Password" - Made a login form. It consists of a field for entering mail, a field for entering a password and a "send" button.
-
-The submit button displays the entered data in JSON format and clears the input fields. The button is disabled if invalid data is entered. If the user has entered invalid data, the input field will be highlighted in red, used regex to validate mail.
 
 
 
